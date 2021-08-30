@@ -9,21 +9,15 @@ public class Main
 	    int k[] = new int[n];
 	    for(int j=n-1;j>=0;j--)
 	    {
-	        if(s.empty())
-            {
-                k[j]=-1;
-                s.push(arr[j]);
-            }
-            else
-            {
-            while(s.empty()==false && arr[j]<=s.peek())
+	       
+            while(s.empty()==false && arr[j]<=arr[s.peek()])
             {
                 s.pop();
             }
-            int d = s.empty()? -1 : s.peek();
+            int d = s.empty()? -1 : arr[s.peek()];
             k[j]=d;
-            s.push(arr[j]);
-            }
+            s.push(j);
+            
 	    }
 	    return k;
 	}
