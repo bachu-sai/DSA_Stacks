@@ -1,0 +1,35 @@
+
+
+import java.lang.*;
+import java.util.*;
+import java.io.*;
+public class Main
+{
+	public static int[] NextGreater(int arr[],int n)
+	{
+	    Stack<Integer> s = new Stack<Integer>();
+	    int k[] = new int[n];
+	    for(int j=n-1;j>=0;j--)
+	    {
+	        
+            while(s.empty()==false && arr[j]>=arr[s.peek()])
+            {
+                s.pop();
+            }
+            int d = s.empty()? -1 : s.peek()-j;
+            k[j]=d;
+            s.push(j);
+            
+	    }
+	    return k;
+	}
+	public static void main(String[] args) {
+		int arr[]={4,5,2,25};
+		int n=arr.length;
+		int res[]=NextGreater(arr,n);
+		for(int i=0;i<n;i++)
+		{
+		    System.out.println(res[i]+" ");
+		}
+	}
+}
