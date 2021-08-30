@@ -1,0 +1,40 @@
+
+import java.lang.*;
+import java.util.*;
+import java.io.*;
+public class Main
+{
+	public static int[] NextSmaller(int arr[],int n)
+	{
+	    Stack<Integer> s = new Stack<Integer>();
+	    int k[] = new int[n];
+	    for(int j=0;j<n;j++)
+	    {
+	        if(s.empty())
+            {
+                k[j]=-1;
+                s.push(arr[j]);
+            }
+            else
+            {
+            while(s.empty()==false && arr[j]<=s.peek())
+            {
+                s.pop();
+            }
+            int d = s.empty()? -1 : s.peek();
+            k[j]=d;
+            s.push(arr[j]);
+            }
+	    }
+	    return k;
+	}
+	public static void main(String[] args) {
+		int arr[]={4,5,2,25};
+		int n=arr.length;
+		int res[]=NextSmaller(arr,n);
+		for(int i=0;i<n;i++)
+		{
+		    System.out.println(res[i]+" ");
+		}
+	}
+}
